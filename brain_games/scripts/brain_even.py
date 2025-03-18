@@ -26,6 +26,7 @@ def get_correct_answer(name_user):
             print('Correct!')
         elif user_answer == 'yes' != is_even(number):
             print(f"'yes' is wrong answer ;(. Correct answer was 'no'. Let's try again, {name_user}.")
+            exit()
         else:
             return
         
