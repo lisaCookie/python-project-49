@@ -33,7 +33,7 @@ def get_correct_answer(name_user):
 
 
 def main():
-    """Main function to run the game."""
+
     print('Welcome to the Brain Games!')
     name_user = welcome_user()  
     print('Answer "yes" if the number is even, otherwise answer "no".')
