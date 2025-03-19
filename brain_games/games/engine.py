@@ -22,7 +22,8 @@ def ask_question(user_name, question, correct_answer, correct_answers):
         else:
             print(
                 f"'{int(user_answer)}' is the wrong answer ;(. "
-                f"Correct answer was '{correct_answer}'."
+                f"Correct answer was '{correct_answer}'.\n"
+                f"Let's try again, {user_name}!"
             )
             exit()  
     except ValueError:

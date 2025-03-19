@@ -15,7 +15,7 @@ def play_progression():
 
     start = random.randint(1, 10)  
     step = random.randint(1, 5)     
-    length = random.randint(5, 10)  
+    length = random.randint(10, 12)  
     
     progression = generate_arithmetic_progression(start, step, length)
     

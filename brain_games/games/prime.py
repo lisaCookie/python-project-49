@@ -44,8 +44,9 @@ def play_random_primes():
             correct_answers += 1
         else:
             print(
-                f"'{user_answer}' is wrong answer ;(. Correct answer was "
-                f"'{correct_answer}'. Let's try again, {user_name}."
+                f"'{(user_answer)}' is the wrong answer ;(. "
+                f"Correct answer was '{correct_answer}'.\n"
+                f"Let's try again, {user_name}!"
             )
             exit()
     print(f"Congratulations, {user_name}!")
