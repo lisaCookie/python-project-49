@@ -22,7 +22,13 @@ def play_calculator_game():
 
     for _ in range(3):  
         question, correct_answer = generate_expression()
-        correct_answers = ask_question(user_name, question, correct_answer, correct_answers) 
+        
+        correct_answers = ask_question(
+            user_name, 
+            question, 
+            correct_answer, 
+            correct_answers
+        )
             
 
 if __name__ == "__main__":

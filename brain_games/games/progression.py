@@ -1,10 +1,13 @@
 import random
+
 from brain_games.games.engine import ask_question, main, welcome_user
 
 main()
 
+
 def generate_arithmetic_progression(start, step, length):
     return [start + i * step for i in range(length)]
+
 
 def play_progression():
     user_name = welcome_user()  
@@ -24,8 +27,10 @@ def play_progression():
         progression[missing_index] = '..'  
         question = ' '.join(map(str, progression))  
         
-        correct_answers = ask_question(user_name, question, correct_answer, correct_answers) 
+        correct_answers = ask_question(user_name, question, correct_answer,
+        correct_answers) 
         progression[missing_index] = correct_answer
+
 
 if __name__ == "__main__":
     play_progression()

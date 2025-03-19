@@ -20,7 +20,10 @@ def ask_question(user_name, question, correct_answer, correct_answers):
             
             return correct_answers  
         else:
-            print(f"'{int(user_answer)}' is the wrong answer ;(. Correct answer was '{correct_answer}'.")
+            print(
+                f"'{int(user_answer)}' is the wrong answer ;(. "
+                f"Correct answer was '{correct_answer}'."
+            )
             exit()  
     except ValueError:
         print("No, way!")
@@ -32,5 +35,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
-     
+    main() 
