@@ -1,7 +1,9 @@
 import random
-from brain_games.games.engine import ask_question, welcome_user, main
+
+from brain_games.games.engine import ask_question, main, welcome_user
 
 main()
+
 
 def generate_expression():
     num1 = random.randint(1, 10)
@@ -10,6 +12,7 @@ def generate_expression():
     
     expression = f"{num1} {operator} {num2}"
     return expression, eval(expression)
+
 
 def play_calculator_game():
     user_name = welcome_user()  
@@ -21,7 +24,6 @@ def play_calculator_game():
         question, correct_answer = generate_expression()
         correct_answers = ask_question(user_name, question, correct_answer, correct_answers) 
             
-          
-            
+
 if __name__ == "__main__":
     play_calculator_game()

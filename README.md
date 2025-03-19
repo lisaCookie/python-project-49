@@ -8,3 +8,6 @@ https://asciinema.org/a/DXYntDViR4wgT5V9AIOGFp5YH
 
 brain-cacl
 https://asciinema.org/a/Rg50BYmp6RFB7iDZ5kEUN8QZi
+
+brain-gcd
+https://asciinema.org/a/RR12BdngYliZRN2OZsjN6MChE

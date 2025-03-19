@@ -4,6 +4,7 @@ def welcome_user():
     print(f'Hello, {name}!')
     return name
 
+
 def ask_question(user_name, question, correct_answer, correct_answers):
     user_answer = input(f"Question: {question}\nYour answer: ").strip()
     
@@ -25,8 +26,10 @@ def ask_question(user_name, question, correct_answer, correct_answers):
         print("No, way!")
         exit()
 
+
 def main():
     print('Welcome to the Brain Games!')
+
 
 if __name__ == "__main__":
     main()
