@@ -31,7 +31,7 @@ def play_even():
         else:
             print(
                 f"'{user_answer}' is the wrong answer ;(. "
-                f"Correct answer was '{correct_answer}'.\n "
+                f"Correct answer was '{correct_answer}'.\n"
                 f"Let's try again, {user_name}!"
             )
             return 
