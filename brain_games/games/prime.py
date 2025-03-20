@@ -29,7 +29,7 @@ def ask_question(user_name, question, correct_answer):
 
 def play_random_primes():
     user_name = welcome_user()  
-    print('Answer "yes" if the given number is prime. Otherwise answer "no".')
+    print('Answer "yes" if given number is prime. Otherwise answer "no".')
     
     correct_answers = 0  
 
