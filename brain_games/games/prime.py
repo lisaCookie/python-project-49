@@ -14,7 +14,7 @@ def is_prime(n):
 
 def play_random_primes():
     user_name = main()  
-    print('Answer "yes" if the given number is prime. Otherwise answer "no".')
+    print('Answer "yes" if given number is prime. Otherwise answer "no".')
     
     correct_answers = 0  
 
