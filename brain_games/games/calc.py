@@ -1,8 +1,6 @@
 import random
 
-from brain_games.games.engine import ask_question, main, welcome_user
-
-main()
+from brain_games.games.engine import ask_question, main
 
 
 def generate_expression():
@@ -15,7 +13,7 @@ def generate_expression():
 
 
 def play_calculator_game():
-    user_name = welcome_user()  
+    user_name = main()  
     print('What is the result of the expression?')
 
     correct_answers = 0  

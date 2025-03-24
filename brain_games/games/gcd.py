@@ -1,9 +1,7 @@
 import math
 import random
 
-from brain_games.games.engine import ask_question, main, welcome_user
-
-main()
+from brain_games.games.engine import ask_question, main
 
 
 def generate_random_gcd_queries(
@@ -29,7 +27,7 @@ def play_generate_gcd():
 
     queries = generate_random_gcd_queries(num_queries, min_value, max_value)
 
-    user_name = welcome_user()  
+    user_name = main() 
     print('Find the greatest common divisor of given numbers.')
 
     correct_answers = 0  

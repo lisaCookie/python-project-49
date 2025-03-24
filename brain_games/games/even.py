@@ -1,8 +1,6 @@
 import random
 
-from brain_games.games.engine import main, welcome_user
-
-main()
+from brain_games.games.engine import ask_question, main
 
 
 def is_even(number):
@@ -10,34 +8,23 @@ def is_even(number):
 
 
 def play_even():
-    user_name = welcome_user()  
+    user_name = main()
     print('Answer "yes" if the number is even, otherwise answer "no".')
     
     correct_answers = 0
-    while correct_answers < 3:
-        number = random.randint(1, 20)
-        print(f'Question: {number}')
-        user_answer = input("Your answer: ").strip().lower()
 
-        if user_answer not in ['yes', 'no']:
-            print('No, way!')
-            exit()  
+    for _ in range(3):
+        number = random.randint(1, 50)  
+        question = number  
+        correct_answer = 'yes' if is_even(number) else 'no'  
 
-        correct_answer = 'yes' if is_even(number) else 'no'
-        
-        if user_answer == correct_answer:
-            correct_answers += 1
-            print('Correct!')
-        else:
-            print(
-                f"'{user_answer}' is the wrong answer ;(. "
-                f"Correct answer was '{correct_answer}'.\n"
-                f"Let's try again, {user_name}!"
-            )
-            return 
-        
-    print(f'Congratulations, {user_name}!')
+        correct_answers = ask_question(
+            user_name, 
+            question, 
+            correct_answer, 
+            correct_answers
+        )
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': 
     play_even()

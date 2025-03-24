@@ -1,8 +1,6 @@
 import random
 
-from brain_games.games.engine import main, welcome_user
-
-main()
+from brain_games.games.engine import ask_question, main
 
 
 def is_prime(n):
@@ -14,22 +12,9 @@ def is_prime(n):
     return True
 
 
-def ask_question(user_name, question, correct_answer):
-    while True:
-        user_answer = input(
-            f"Question: {question}\nYour answer: "
-        ).strip().lower()
-        
-        if user_answer in ['yes', 'no']:
-            return user_answer
-        else:
-            print('No, way!')
-            exit()
-
-
 def play_random_primes():
-    user_name = welcome_user()  
-    print('Answer "yes" if given number is prime. Otherwise answer "no".')
+    user_name = main()  
+    print('Answer "yes" if the given number is prime. Otherwise answer "no".')
     
     correct_answers = 0  
 
@@ -37,24 +22,16 @@ def play_random_primes():
         num = random.randint(1, 20)  
         correct_answer = 'yes' if is_prime(num) else 'no'  
         
-        user_answer = ask_question(user_name, num, correct_answer)  
-        
-        if user_answer == correct_answer:
-            print("Correct!")
-            correct_answers += 1
-        else:
-            print(
-                f"'{(user_answer)}' is the wrong answer ;(. "
-                f"Correct answer was '{correct_answer}'.\n"
-                f"Let's try again, {user_name}!"
-            )
-            exit()
-    print(f"Congratulations, {user_name}!")
+        correct_answers = ask_question(
+            user_name, 
+            num, 
+            correct_answer, 
+            correct_answers
+        )  
 
 
 if __name__ == "__main__":
-    play_random_primes()
-
+    play_random_primes()  
 
 
 

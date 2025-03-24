@@ -1,8 +1,6 @@
 import random
 
-from brain_games.games.engine import ask_question, main, welcome_user
-
-main()
+from brain_games.games.engine import ask_question, main
 
 
 def generate_arithmetic_progression(start, step, length):
@@ -10,7 +8,7 @@ def generate_arithmetic_progression(start, step, length):
 
 
 def play_progression():
-    user_name = welcome_user()  
+    user_name = main() 
     print('What number is missing in the progression?')
 
     start = random.randint(1, 10)  
