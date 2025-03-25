@@ -5,52 +5,25 @@ def welcome_user():
     return name
 
 
-def ask_question(user_name, question, correct_answer, correct_answers):
+def ask_question(game):
+    question, correct_answer = game() 
     user_answer = input(f"Question: {question}\nYour answer: ").strip()
-    
+
     if isinstance(correct_answer, (int, float)):
-        try:
-            user_answer_float = float(user_answer)  
-            if user_answer_float == correct_answer:
-                print('Correct!')
-                correct_answers += 1
-                
-                if correct_answers == 3:
-                    print(f'Congratulations, {user_name}!')
-                    exit()  
-                
-                return correct_answers  
-            else:
-                print(
-                    f"'{int(user_answer_float)}' is the wrong answer ;(. "
-                    f"Correct answer was '{correct_answer}'.\n"
-                    f"Let's try again, {user_name}!"
-                )
-                exit()  
-        except ValueError:
-            print("No, way!")  
-            exit() 
+        user_answer_float = float(user_answer)
+        if user_answer_float == correct_answer:
+            print('Correct!')
+            return True
     else:
-        try:
-            if user_answer == correct_answer:
-                print('Correct!')
-                correct_answers += 1
-            
-                if correct_answers == 3:
-                    print(f'Congratulations, {user_name}!')
-                    exit()  
-            
-                return correct_answers  
-            else:
-                print(
-                    f"'{user_answer}' is the wrong answer ;(. "
-                    f"Correct answer was '{correct_answer}'.\n"
-                    f"Let's try again, {user_name}!"
-                )
-                exit()
-        except ValueError:
-            print("No, way!")  
-            exit()
+        if user_answer.lower() == correct_answer.lower():
+            print('Correct!')
+            return True
+    
+    print(
+        f"'{user_answer}' is the wrong answer ;(. "
+        f"Correct answer was '{correct_answer}'."
+    )
+    exit()
 
 
 def main():

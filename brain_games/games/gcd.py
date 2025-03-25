@@ -4,11 +4,8 @@ import random
 from brain_games.games.engine import ask_question, main
 
 
-def generate_random_gcd_queries(
-    num_queries: int, 
-    min_value: int = 10, 
-    max_value: int = 100
-):
+def generate_random_gcd_queries(num_queries: int, min_value: int = 10,
+                                  max_value: int = 100):
     queries = []
 
     for _ in range(num_queries):
@@ -20,8 +17,14 @@ def generate_random_gcd_queries(
     return queries
 
 
+def get_question_and_answer(a, b):
+    question = f"{a} {b}"
+    correct_answer = math.gcd(a, b)
+    return question, str(correct_answer)
+
+
 def play_generate_gcd():
-    num_queries = 10  
+    num_queries = 3  
     min_value = 1     
     max_value = 20   
 
@@ -32,15 +35,20 @@ def play_generate_gcd():
 
     correct_answers = 0  
 
-    for a, b, correct_answer in queries: 
-        question = f"{a} {b}"  
-        correct_answers = ask_question(
-            user_name, 
-            question, 
-            correct_answer, 
-            correct_answers
-        )
+    for a, b, _ in queries:
+        question, correct_answer = get_question_and_answer(a, b)
+
+        def game():
+            return question, correct_answer
+
+        correct_answers += ask_question(game)
+
+        if correct_answers == 3:
+            print(f'Congratulations, {user_name}!')
+            exit()
 
 
 if __name__ == "__main__":
     play_generate_gcd()
+
+

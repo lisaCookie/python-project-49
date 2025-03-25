@@ -13,21 +13,27 @@ def generate_expression():
 
 
 def play_calculator_game():
-    user_name = main()  
+    num_queries = 3  
+    user_name = main()
     print('What is the result of the expression?')
 
     correct_answers = 0  
 
-    for _ in range(3):  
+    for _ in range(num_queries):
         question, correct_answer = generate_expression()
         
-        correct_answers = ask_question(
-            user_name, 
-            question, 
-            correct_answer, 
-            correct_answers
-        )
-            
+        def game():
+            return question, str(correct_answer)
+
+        correct_answers += ask_question(game)
+
+        if correct_answers == 3:
+            print(f'Congratulations, {user_name}!')
+            exit()
+
 
 if __name__ == "__main__":
     play_calculator_game()
+
+
+

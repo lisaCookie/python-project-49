@@ -3,31 +3,40 @@ import random
 from brain_games.games.engine import ask_question, main
 
 
-def generate_arithmetic_progression(start, step, length):
-    return [start + i * step for i in range(length)]
+def generate_progression():
+    start = random.randint(1, 10)
+    step = random.randint(1, 10)
+    length = 10
+    progression = [start + step * i for i in range(length)]
+    return progression
+
+
+def get_question_and_answer():
+    progression = generate_progression()
+    hid_index = random.randint(0, len(progression) - 1)
+    correct_answer = progression[hid_index]
+    progression[hid_index] = '..'
+    question = ' '.join(map(str, progression))
+    return question, str(correct_answer)
 
 
 def play_progression():
-    user_name = main() 
+    user_name = main()
     print('What number is missing in the progression?')
 
-    start = random.randint(1, 10)  
-    step = random.randint(1, 5)     
-    length = random.randint(10, 12)  
-    
-    progression = generate_arithmetic_progression(start, step, length)
-    
-    correct_answers = 0  
+    correct_answers = 0
 
-    for _ in range(3):  
-        missing_index = random.randint(0, length - 1)  
-        correct_answer = progression[missing_index]  
-        progression[missing_index] = '..'  
-        question = ' '.join(map(str, progression))  
+    for _ in range(3):
+        question, correct_answer = get_question_and_answer()
         
-        correct_answers = ask_question(user_name, question, correct_answer,
-        correct_answers) 
-        progression[missing_index] = correct_answer
+        def game():
+            return question, correct_answer
+
+        correct_answers += ask_question(game)
+
+        if correct_answers == 3:
+            print(f'Congratulations, {user_name}!')
+            exit()
 
 
 if __name__ == "__main__":

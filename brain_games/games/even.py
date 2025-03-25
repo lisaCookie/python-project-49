@@ -18,12 +18,15 @@ def play_even():
         question = number  
         correct_answer = 'yes' if is_even(number) else 'no'  
 
-        correct_answers = ask_question(
-            user_name, 
-            question, 
-            correct_answer, 
-            correct_answers
-        )
+        def game():
+            return question, correct_answer  
+
+        if ask_question(game): 
+            correct_answers += 1
+            
+            if correct_answers == 3:
+                print(f'Congratulations, {user_name}!')
+                exit()
 
 
 if __name__ == '__main__': 
