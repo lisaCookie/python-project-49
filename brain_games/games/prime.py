@@ -31,7 +31,7 @@ def play_random_primes():
         def game():
             return question, correct_answer
 
-        correct_answers += ask_question(game)
+        correct_answers += ask_question(game, user_name)
             
         if correct_answers == 3:
             print(f'Congratulations, {user_name}!')

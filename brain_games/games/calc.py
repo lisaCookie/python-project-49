@@ -25,9 +25,10 @@ def play_calculator_game():
         def game():
             return question, str(correct_answer)
 
-        correct_answers += ask_question(game)
+        if ask_question(game, user_name):
+            correct_answers += 1
 
-        if correct_answers == 3:
+        if correct_answers == num_queries:
             print(f'Congratulations, {user_name}!')
             exit()
 
