@@ -1,36 +1,46 @@
-
 def welcome_user():
     name = input("May I have your name? ")
     print(f'Hello, {name}!')
     return name
 
 
+def main():
+    print('Welcome to the Brain Games!')
+
+
 def ask_question(game, user_name):
     question, correct_answer = game() 
     user_answer = input(f"Question: {question}\nYour answer: ").strip()
 
-    if isinstance(correct_answer, (int, float)):
-        user_answer_float = float(user_answer)
-        if user_answer_float == correct_answer:
-            print('Correct!')
-            return True
+    if user_answer.lower() == correct_answer.lower():
+        print('Correct!')
+        return True
     else:
-        if user_answer.lower() == correct_answer.lower():
-            print('Correct!')
-            return True
+        print(
+            f"'{user_answer}' is the wrong answer ;(. "
+            f"Correct answer was '{correct_answer}'.\n"
+            f"Let's try again, {user_name}!"
+        )
+        return False 
     
-    print(
-        f"'{user_answer}' is the wrong answer ;(. "
-        f"Correct answer was '{correct_answer}'.\n"
-        f"Let's try again, {user_name}!"
-    )
-    exit()
+
+main()
+user_name = welcome_user()
 
 
-def main():
-    print('Welcome to the Brain Games!')
-    return welcome_user()
+def my_game(game):
+    
+    correct_answers = 0
+    num_queries = 3  
+
+    for _ in range(num_queries):
+        if not ask_question(game, user_name):
+            break 
+        correct_answers += 1
+
+    if correct_answers == num_queries:
+        print(f'Congratulations, {user_name}!')
 
 
 if __name__ == "__main__":
-    user_name = main() 
+    user_name = main()

@@ -1,51 +1,38 @@
 import math
 import random
 
-from brain_games.games.engine import ask_question, main
+from brain_games.games.engine import my_game
 
 
-def generate_random_gcd_queries(num_queries: int, min_value: int = 10,
-                                  max_value: int = 100):
+def generate_random_gcd_queries(num_queries: int, min_value: int = 10, 
+                                    max_value: int = 100):
     queries = []
-
     for _ in range(num_queries):
         a = random.randint(min_value, max_value)
         b = random.randint(min_value, max_value)
-        gcd_value = math.gcd(a, b)
-        queries.append((a, b, gcd_value))
-
+        queries.append((a, b))
     return queries
 
 
 def get_question_and_answer(a, b):
     question = f"{a} {b}"
-    correct_answer = math.gcd(a, b)
-    return question, str(correct_answer)
+    correct_answer = str(math.gcd(a, b))
+    return question, correct_answer
 
 
 def play_generate_gcd():
+    print('Find the greatest common divisor of given numbers.')
     num_queries = 3  
     min_value = 1     
     max_value = 20   
 
     queries = generate_random_gcd_queries(num_queries, min_value, max_value)
-
-    user_name = main() 
-    print('Find the greatest common divisor of given numbers.')
-
-    correct_answers = 0  
-
-    for a, b, _ in queries:
-        question, correct_answer = get_question_and_answer(a, b)
-
-        def game():
-            return question, correct_answer
-
-        correct_answers += ask_question(game, user_name)
-
-        if correct_answers == 3:
-            print(f'Congratulations, {user_name}!')
-            exit()
+    
+    def game():
+        for a, b in queries:
+            return get_question_and_answer(a, b)
+    
+    my_game(game)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 import random
 
-from brain_games.games.engine import ask_question, main
+from brain_games.games.engine import my_game
 
 
 def generate_progression():
@@ -21,22 +21,12 @@ def get_question_and_answer():
 
 
 def play_progression():
-    user_name = main()
-    print('What number is missing in the progression?')
-
-    correct_answers = 0
-
-    for _ in range(3):
+    def game():
         question, correct_answer = get_question_and_answer()
-        
-        def game():
-            return question, correct_answer
+        return question, correct_answer
 
-        correct_answers += ask_question(game, user_name)
-
-        if correct_answers == 3:
-            print(f'Congratulations, {user_name}!')
-            exit()
+    print('What number is missing in the progression?')
+    my_game(game)
 
 
 if __name__ == "__main__":

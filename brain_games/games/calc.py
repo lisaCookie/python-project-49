@@ -1,6 +1,6 @@
 import random
 
-from brain_games.games.engine import ask_question, main
+from brain_games.games.engine import my_game
 
 
 def generate_expression():
@@ -9,32 +9,19 @@ def generate_expression():
     operator = random.choice(['+', '-', '*'])
     
     expression = f"{num1} {operator} {num2}"
-    return expression, eval(expression)
+    correct_answer = str(eval(expression)) 
+    return expression, correct_answer
 
 
 def play_calculator_game():
-    num_queries = 3  
-    user_name = main()
-    print('What is the result of the expression?')
-
-    correct_answers = 0  
-
-    for _ in range(num_queries):
+    
+    def game():
         question, correct_answer = generate_expression()
-        
-        def game():
-            return question, str(correct_answer)
-
-        if ask_question(game, user_name):
-            correct_answers += 1
-
-        if correct_answers == num_queries:
-            print(f'Congratulations, {user_name}!')
-            exit()
-
+        return question, correct_answer
+    
+    print('What is the result of the expression?')
+    my_game(game)
+   
 
 if __name__ == "__main__":
     play_calculator_game()
-
-
-
