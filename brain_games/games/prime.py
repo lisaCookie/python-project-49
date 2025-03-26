@@ -20,7 +20,7 @@ def generate_question_and_answer():
 
 
 def play_random_primes():
-    print('Answer "yes" if number is prime, otherwise answer "no".')
+    print('Answer "yes" if given number is prime. Otherwise answer "no".')
 
     def game():
         return generate_question_and_answer()
