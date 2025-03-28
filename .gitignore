@@ -3,3 +3,4 @@ demo.cast
 .venv
 main.py
 
+__pycache__
